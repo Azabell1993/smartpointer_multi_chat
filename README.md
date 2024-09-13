@@ -2,11 +2,20 @@
 
 프로젝트의 네 가지 코드 파일에 대한 상세한 분석과 설명을 제공하겠습니다. 이 설명은 프로젝트 제출용으로 적합하도록 매우 상세하게 작성되었습니다. 프로젝트는 주로 스마트 포인터의 구현과 활용을 중심으로 한 채팅 서버를 개발하는 내용입니다. 이 채팅 서버는 리눅스 시스템에서 다중 클라이언트와의 통신을 관리하며, 메모리 관리와 자원 해제를 효율적으로 하기 위해 스마트 포인터를 사용합니다.
 
-#### 스마트포인터 라이브러리
-https://github.com/Azabell1993/c_smartpointer
+### 스마트포인터 라이브러리
 
+**[c_smartpointer]**  
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Azabell1993&repo=c_smartpointer)](https://github.com/Azabell1993/c_smartpointer)
+
+<img width="558" alt="스크린샷 2024-09-13 오후 4 23 41" src="https://github.com/user-attachments/assets/dc5e9bd2-22d7-4e85-956b-b58b39b5bf74">
 
 -------------
+
+## 시연 모습
+<img width="690" alt="스크린샷 2024-09-13 오후 4 28 09" src="https://github.com/user-attachments/assets/0246620f-72f4-4330-8f52-e28fe79dec63">
+<img width="938" alt="스크린샷 2024-09-13 오후 4 29 09" src="https://github.com/user-attachments/assets/ea0cefab-6b93-486f-aa97-67d74e3ffecf">
+<img width="1487" alt="스크린샷 2024-09-13 오후 4 29 52" src="https://github.com/user-attachments/assets/63ba7f96-4d8d-4d14-a7ff-93235c2804d6">
+<img width="1643" alt="스크린샷 2024-09-13 오후 4 30 06" src="https://github.com/user-attachments/assets/4f1f2a6c-3002-4e37-803b-091a644ee6a5">
 
 ## 전체 아키텍트
 이 시스템은 서버와 클라이언트가 소켓 통신을 통해 메시지를 주고받으며, 서버가 다수의 클라이언트를 관리하는 구조입니다. 스마트 포인터를 사용하여 메모리 관리를 쉽게 하고, 다수의 클라이언트를 관리할 때 참조 카운팅과 쓰레드 안전성을 확보하고 있습니다.
@@ -438,4 +447,3 @@ IP 주소를 확인하려면 다음 명령어를 사용할 수 있습니다:
 > $ make
 
 모든 파일이 정상적으로 컴파일된 후, chat_server와 chat_client 실행 파일이 생성됩니다.
-# smartpointer_multi_chat
