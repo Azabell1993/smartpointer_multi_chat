@@ -8,7 +8,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-#include <arpa/inet.h>
 #include <pthread.h>
 #include "lib/include/user.h"  // 사용자 데이터베이스 처리
 
