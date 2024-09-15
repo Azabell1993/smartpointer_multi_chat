@@ -22,10 +22,36 @@
     }
 ```
 
+2. log 기반 grep -r 명령어
+```
+void log_chat_message(const char *message) {
+    // 절대 경로로 로그 파일 지정
+    char log_path[BUFFER_SIZE];
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+
+    // 현재 날짜를 기반으로 로그 파일명을 만듦
+    // 반드시 touch 명령어로 해당 파일을 미리 생성해두어야 함
+    // 권한에 대해서도 고려해야 함
+    // sudo touch /var/log/chatlog_20240915.log
+    // sudo chmod 777 /var/log/chatlog_20240915.log
+    strftime(log_path, sizeof(log_path), "/var/log/chatlog_%Y%m%d.log", t);
+```
+서버에서
+> sudo tail -f /var/log/chatlog_20240915.log
+를 하면 로그에 실시간으로 메세지가 쌓이는 것을 확인하실 수 있습니다.
+그리고, 서버에서 grep -r 로 검색기능을 하려면 서버내 main함수 주석을 해제하고 사용을 하셔야 가능하십니다.(클라이언트에서는 작동을 막음)
+
 3. start_daemon.sh 경로
+**예시**
 ```
 SERVER_PATH="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save"
 LOG_FILE="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save/chatlog_$(date +'%Y%m%d').log"
+```  
+
+```
+SERVER_PATH="/home/pi/smartpointer_multi_chat"
+LOG_FILE="/home/pi/smartpointer_multi_chat/chatlog_$(date +'%Y%m%d').log"
 ```
 
 ## 주의사항
