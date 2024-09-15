@@ -399,6 +399,10 @@ void log_chat_message(const char *message) {
     struct tm *t = localtime(&now);
 
     // 현재 날짜를 기반으로 로그 파일명을 만듦
+    // 반드시 touch 명령어로 해당 파일을 미리 생성해두어야 함
+    // 권한에 대해서도 고려해야 함
+    // sudo touch /var/log/chatlog_20240915.log
+    // sudo chmod 777 /var/log/chatlog_20240915.log
     strftime(log_path, sizeof(log_path), "/var/log/chatlog_%Y%m%d.log", t);
 
     // 뮤텍스 잠금으로 동시 접근 제어
