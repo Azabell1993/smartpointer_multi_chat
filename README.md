@@ -28,6 +28,10 @@ SERVER_PATH="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save"
 LOG_FILE="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save/chatlog_$(date +'%Y%m%d').log"
 ```
 
+## 주의사항
+1. chat_server 로 실행시 백그라운드 실행이 가능하나, daemon_start.sh를 하여샤 완전한 백그라운드가 됩니다.
+2. 서버 연결시 올바른 아이피를 입력하셔야합니다.
+
 ## 시연 모습
 <img width="690" alt="스크린샷 2024-09-13 오후 4 28 09" src="https://github.com/user-attachments/assets/0246620f-72f4-4330-8f52-e28fe79dec63">
 <img width="938" alt="스크린샷 2024-09-13 오후 4 29 09" src="https://github.com/user-attachments/assets/ea0cefab-6b93-486f-aa97-67d74e3ffecf">
