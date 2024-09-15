@@ -11,6 +11,23 @@
 
 -------------
 
+## 필수 사항(경로 수정)
+1. server.c - daemonize() 함수내 경로
+```
+    // 로그 파일을 엽니다. 기존 코드에서 파일을 올바르게 여는지 확인하세요.
+    int fd = open("/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save/chat_server.log", O_RDWR | O_CREAT | O_APPEND, 0600);
+    if (fd == -1) {
+        perror("open log");
+        exit(EXIT_FAILURE);
+    }
+```
+
+3. start_daemon.sh 경로
+```
+SERVER_PATH="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save"
+LOG_FILE="/home/ubuntu/Desktop/workspace/exam_chat_mutex_server/save/chatlog_$(date +'%Y%m%d').log"
+```
+
 ## 시연 모습
 <img width="690" alt="스크린샷 2024-09-13 오후 4 28 09" src="https://github.com/user-attachments/assets/0246620f-72f4-4330-8f52-e28fe79dec63">
 <img width="938" alt="스크린샷 2024-09-13 오후 4 29 09" src="https://github.com/user-attachments/assets/ea0cefab-6b93-486f-aa97-67d74e3ffecf">
