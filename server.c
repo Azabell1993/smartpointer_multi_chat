@@ -677,9 +677,14 @@ void daemonize() {
 
     // 로그 파일을 엽니다. 기존 코드에서 파일을 올바르게 여는지 확인하세요.
     int fd = open("/home/pi/Desktop/veda/workspace/save/chat_server.log", O_RDWR | O_CREAT | O_APPEND, 0600);
-    if (fd == -1) {
+        if (fd == -1) {
         perror("open log");
+        printf("로그 파일 열기 실패\n");
+        printf("server.c 내의 daemonize()함수에서 로그 파일을 열지 못했습니다. 새로 시작하는 장소이니 올바른 경로를 지정하세요.\n");
         exit(EXIT_FAILURE);
+    } else {
+        printf("로그 파일 열기 성공\n");
+        printf("올바른 경로로 지정이 되었고, 시작이 되었습니다. 이 작동은 client에서 한번 Exit를 하면 server도 종료가 되므로, 반드시 daemon_start.sh를 사용하여 실행을 하세요.\n");
     }
 
     // 로그 파일로 stdout과 stderr 리다이렉션
