@@ -55,12 +55,12 @@ SERVER_PATH="/home/pi/smartpointer_multi_chat"
 LOG_FILE="/home/pi/smartpointer_multi_chat/chatlog_$(date +'%Y%m%d').log"
 ```
 
-4. 서버 동작 방법은 두가지입니다.
-(1) 자동 : 수동으로 서버관리를 직접적으로 관여하기 힘듬
-(2) 수동 : 수동으로 서버관리를 직접적으로 관여가 가능
+4. 서버 동작 방법은 두가지입니다.  
+(1) 자동 : 수동으로 서버관리를 직접적으로 관여하기 힘듬  
+(2) 수동 : 수동으로 서버관리를 직접적으로 관여가 가능  
 그러나, script 파일을 통해 바로 시작하고 싶으시다면 아래처럼 하셔야합니다.
-```
 
+```  
 /**
  * @brief main 함수
  * @param void
