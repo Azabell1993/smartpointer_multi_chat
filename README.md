@@ -40,7 +40,7 @@ void log_chat_message(const char *message) {
 서버에서  
 > sudo tail -f /var/log/chatlog_20240915.log
 를 하면 로그에 실시간으로 메세지가 쌓이는 것을 확인하실 수 있습니다.
-그리고, 서버에서 수동으로 시작하는 메뉴를 선택하여야합니다. (grep 기능은 서버에만 존재함)
+그리고, 서버에서 수동으로 시작하는 메뉴를 선택하여야합니다. (현재 grep은 서버에서만 가능)
 
  
 3. start_daemon.sh 경로
