@@ -23,6 +23,9 @@
 ```
 
 2. log 기반 grep -r 명령어
+   반드시 해당 로그파일을 생성하고 권한도 적절하게 부여해줘야합니다.
+   > sudo touch /var/log/chatlog_20240915.log  
+     sudo chmod 777 /var/log/chatlog_20240915.log
 ```
 void log_chat_message(const char *message) {
     // 절대 경로로 로그 파일 지정
@@ -491,6 +494,12 @@ $ tree
 
 서버를 백그라운드에서 실행하고 로그를 기록할 수 있습니다.
 
+- 주의사항(main()함수에서 아래와 같은 내용을 참조하시오.
+```
+// 스크립트를 통해 바로 시작을 하고 싶으면
+auto_daemon_mode();
+```
+    
 ```bash
 $ ./start_daemon.sh start
 ```
