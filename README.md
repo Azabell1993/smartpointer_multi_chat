@@ -54,6 +54,10 @@ SERVER_PATH="/home/pi/smartpointer_multi_chat"
 LOG_FILE="/home/pi/smartpointer_multi_chat/chatlog_$(date +'%Y%m%d').log"
 ```
 
+4. 서버 동작 방법은 두가지입니다.
+(1) 자동 : 수동으로 서버관리를 직접적으로 관여하기 힘듬
+(2) 수동 : 수동으로 서버관리를 직접적으로 관여가 가능
+
 ## 주의사항
 1. chat_server 로 실행시 백그라운드 실행이 가능하나, daemon_start.sh를 하여샤 완전한 백그라운드가 됩니다.
 2. 서버 연결시 올바른 아이피를 입력하셔야합니다.
