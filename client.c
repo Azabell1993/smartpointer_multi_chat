@@ -8,6 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <arpa/inet.h>
 #include <pthread.h>
 #include "lib/include/user.h"  // 사용자 데이터베이스 처리
 
@@ -107,6 +108,18 @@ void print_fixed_menu(const char *username) {
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         printf("사용법: %s <서버 IP 주소>\n", argv[0]);
+        return -1;
+    }
+
+    // IP 주소가 유효한지 확인
+    struct sockaddr_in sa;
+    int result = inet_pton(AF_INET, argv[1], &(sa.sin_addr));
+    if (result <= 0) {
+        if (result == 0) {
+            printf("잘못된 IP 주소 형식입니다. 올바른 형식의 IP 주소를 입력하세요.\n");
+        } else {
+            perror("inet_pton 오류");
+        }
         return -1;
     }
     
