@@ -58,6 +58,49 @@ LOG_FILE="/home/pi/smartpointer_multi_chat/chatlog_$(date +'%Y%m%d').log"
 4. 서버 동작 방법은 두가지입니다.
 (1) 자동 : 수동으로 서버관리를 직접적으로 관여하기 힘듬
 (2) 수동 : 수동으로 서버관리를 직접적으로 관여가 가능
+그러나, script 파일을 통해 바로 시작하고 싶으시다면 아래처럼 하셔야합니다.
+```
+
+/**
+ * @brief main 함수
+ * @param void
+ * @return int
+ */
+int main()
+{
+    char yn = '\0'; // 문자를 저장할 변수
+
+    // 스크립트를 통해 바로 시작을 하고 싶으면
+    auto_daemon_mode();
+
+    // server코드를 통해 직접 관리하고 싶으면
+    /*
+        // 로고 출력
+        logo();
+        printf("이 프로그램을 자동으로 데몬 화 하고 싶으시다면 스크립트를 참조하세요.\n");
+
+        // 사용자가 동작 방식을 선택할 수 있게 함
+        printf("서버 동작 방식을 선택하세요: \n");
+        printf("1. 자동 데몬화\n");
+        printf("2. 수동 서버 관리\n");
+        printf("선택: ");
+
+        yn = getchar();
+        while (getchar() != '\n');  // 남은 입력 버퍼 비우기
+
+        if (yn == '1') {
+            auto_daemon_mode();  // 자동 데몬화 모드 실행
+        } else if (yn == '2') {
+            manual_server_mode();  // 수동 서버 관리 모드 실행
+        } else {
+            printf("잘못된 선택입니다. 프로그램을 종료합니다.\n");
+            return -1;
+        }
+    */
+
+    return 0;
+}
+```
 
 ## 주의사항
 1. chat_server 로 실행시 백그라운드 실행이 가능하나, daemon_start.sh를 하여샤 완전한 백그라운드가 됩니다.
