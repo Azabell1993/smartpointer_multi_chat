@@ -777,30 +777,37 @@ void manual_server_mode() {
  * @param void
  * @return int
  */
-int main() {
-    char yn = '\0';  // 문자를 저장할 변수
-    
-    // 로고 출력
-    logo();
-    printf("이 프로그램을 자동으로 데몬 화 하고 싶으시다면 스크립트를 참조하세요.\n");
+int main()
+{
+    char yn = '\0'; // 문자를 저장할 변수
 
-    // 사용자가 동작 방식을 선택할 수 있게 함
-    printf("서버 동작 방식을 선택하세요: \n");
-    printf("1. 자동 데몬화\n");
-    printf("2. 수동 서버 관리\n");
-    printf("선택: ");
-    
-    yn = getchar();
-    while (getchar() != '\n');  // 남은 입력 버퍼 비우기
-    
-    if (yn == '1') {
-        auto_daemon_mode();  // 자동 데몬화 모드 실행
-    } else if (yn == '2') {
-        manual_server_mode();  // 수동 서버 관리 모드 실행
-    } else {
-        printf("잘못된 선택입니다. 프로그램을 종료합니다.\n");
-        return -1;
-    }
-    
+    // 스크립트를 통해 바로 시작을 하고 싶으면
+    auto_daemon_mode();
+
+    // server코드를 통해 직접 관리하고 싶으면
+    /*
+        // 로고 출력
+        logo();
+        printf("이 프로그램을 자동으로 데몬 화 하고 싶으시다면 스크립트를 참조하세요.\n");
+
+        // 사용자가 동작 방식을 선택할 수 있게 함
+        printf("서버 동작 방식을 선택하세요: \n");
+        printf("1. 자동 데몬화\n");
+        printf("2. 수동 서버 관리\n");
+        printf("선택: ");
+
+        yn = getchar();
+        while (getchar() != '\n');  // 남은 입력 버퍼 비우기
+
+        if (yn == '1') {
+            auto_daemon_mode();  // 자동 데몬화 모드 실행
+        } else if (yn == '2') {
+            manual_server_mode();  // 수동 서버 관리 모드 실행
+        } else {
+            printf("잘못된 선택입니다. 프로그램을 종료합니다.\n");
+            return -1;
+        }
+    */
+
     return 0;
 }
