@@ -18,6 +18,15 @@
 #define MAX_CLIENTS 10
 #define BUFFER_SIZE 1024
 
+
+/**
+ * @brief 자동 데몬화 모드 함수
+ * @param void
+ * @return void
+ */
+void auto_daemon_mode();
+void manual_server_mode();
+
 /**
  * @brief 스마트 포인터 구조체
  * 
@@ -723,6 +732,46 @@ void logo() {
     printf("\033[0m");
 }
 
+/** 
+ * @brief 자동 데몬화 모드 함수
+ * @param void
+ * @return void
+ */
+void auto_daemon_mode() {
+    printf("자동으로 데몬화하여 서버를 시작합니다.\n");
+    daemonize();  // 데몬화 함수 호출
+    create_network_tcp_process(1, "127.0.0.1", DEFAULT_TCP_PORT);
+}
+
+/**
+ * @brief 수동 서버 관리 모드 함수
+ * @param void
+ * @return void
+ */
+void manual_server_mode() {
+    char yn = '\0';
+    printf("\nPress Enter to continue...");
+    while (getchar() != '\n');  // Enter 키가 눌릴 때까지 대기
+    printf("이 프로그램을 자동으로 데몬 화 하시겠습니까? (y/n): ");
+    
+    while (1) {
+        yn = getchar();  // 한 문자를 입력받음
+        if (yn == 'y' || yn == 'n') {
+            break;  // y 또는 n을 입력받으면 루프 종료
+        }
+        printf("잘못된 입력입니다. (y/n): ");
+        while (getchar() != '\n');  // 버퍼를 비워서 남은 입력을 처리
+    }
+
+    if (yn == 'y') {
+        daemonize();  // 데몬화 함수 호출
+    } else {
+        printf("데몬화를 하지 않습니다.\n");
+    }
+
+    create_network_tcp_process(1, "127.0.0.1", DEFAULT_TCP_PORT);
+}
+
 /**
  * @brief main 함수
  * @param void
@@ -734,29 +783,24 @@ int main() {
     // 로고 출력
     logo();
     printf("이 프로그램을 자동으로 데몬 화 하고 싶으시다면 스크립트를 참조하세요.\n");
-    daemonize();  // 데몬화 함수 자동 호출
-    // 이거로 데몬프로그램을 돌리고 싶으면 아래 주석 해제
-    // Enter 키를 누르라고 안내
-    // printf("\nPress Enter to continue...");
-    // while (getchar() != '\n');  // Enter 키가 눌릴 때까지 대기
-    // printf("이 프로그램을 자동으로 데몬 화 하시겠습니까? (y/n): ");
+
+    // 사용자가 동작 방식을 선택할 수 있게 함
+    printf("서버 동작 방식을 선택하세요: \n");
+    printf("1. 자동 데몬화\n");
+    printf("2. 수동 서버 관리\n");
+    printf("선택: ");
     
-    // while (1) {
-    //     yn = getchar();  // 한 문자를 입력받음
-    //     if (yn == 'y' || yn == 'n') {
-    //         break;  // y 또는 n을 입력받으면 루프 종료
-    //     }
-    //     printf("잘못된 입력입니다. (y/n): ");  // 유효하지 않은 입력에 대한 처리
-    //     while (getchar() != '\n');  // 버퍼를 비워서 남은 입력을 처리
-    // }
-
-    // if (yn == 'y') {
-    //     daemonize();  // 데몬화 함수 호출
-    // } else {
-    //     printf("데몬화를 하지 않습니다.\n");
-    // }
-    // 여기까지 주석
-
-    create_network_tcp_process(1, "127.0.0.1", DEFAULT_TCP_PORT);
+    yn = getchar();
+    while (getchar() != '\n');  // 남은 입력 버퍼 비우기
+    
+    if (yn == '1') {
+        auto_daemon_mode();  // 자동 데몬화 모드 실행
+    } else if (yn == '2') {
+        manual_server_mode();  // 수동 서버 관리 모드 실행
+    } else {
+        printf("잘못된 선택입니다. 프로그램을 종료합니다.\n");
+        return -1;
+    }
+    
     return 0;
 }
